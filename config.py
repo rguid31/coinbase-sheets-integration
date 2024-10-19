@@ -1,8 +1,12 @@
-import os
 from dotenv import load_dotenv
+import os
 
 # Load environment variables from the .env file located in the .env folder
 load_dotenv(dotenv_path='.env/.env')  # Point to the new location of the .env file
+
+
+print("API Key:", os.getenv('CDP_API_KEY'))
+print("Sheet ID:", os.getenv('SHEET_ID'))
 
 # Access the API key and other environment variables
 # Coinbase API
