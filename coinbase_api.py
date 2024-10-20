@@ -16,3 +16,15 @@ def place_order(order_data):
         return response.json()
     else:
         raise Exception(f"Error placing order: {response.status_code}")
+
+def handle_response(response):
+    if response.status_code == 200:
+        return response.json()
+    elif response.status_code == 400:
+        raise Exception("Bad Request: The request was malformed. Please verify the parameters.")
+    elif response.status_code == 401:
+        raise Exception("Unauthorized: API key is invalid or expired. Please check your credentials.")
+    elif response.status_code == 403:
+        raise Exception("Forbidden: You do not have permission to access this resource.")
+    else:
+        raise Exception(f"Error: Received status code {response.status_code}")
